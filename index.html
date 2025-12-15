@@ -14,29 +14,34 @@
             <button class="theme-button" data-theme="blue-yellow" aria-label="Blue and Yellow Theme"></button>
             <button class="theme-button" data-theme="green-beige" aria-label="Green and Beige Theme"></button>
             <button class="theme-button" data-theme="purple-pink" aria-label="Purple and Pink Theme"></button>
+            
+            <button class="theme-button joke-button" data-theme="joke" aria-label="Joke Theme - Calculator runs away">
+                JOKE
+            </button>
+            
         </div>
     </header>
 
-    <main id="calculator-container" class="calculator" aria-labelledby="calc-heading">
+    <main id="calculator-container" class="calculator is-movable" aria-labelledby="calc-heading">
         <h2 id="calc-heading" class="visually-hidden">Interactive calculator</h2>
         <output id="display" class="display" role="status" aria-live="polite">0</output>
         <div class="keys" role="group" aria-label="Calculator keys">
             <button class="key key--func" data-action="clear">C</button>
             <button class="key key--func" data-action="delete">DEL</button>
-            <button class="key key--func" data-action="percent">%</button>
-            <button class="key key--op" data-action="divide">÷</button>
+            <button class="key key--func" data-action="percent" data-math="percent">%</button>
+            <button class="key key--op" data-action="divide" data-math="divide">÷</button>
             <button class="key" data-digit="7">7</button>
             <button class="key" data-digit="8">8</button>
             <button class="key" data-digit="9">9</button>
-            <button class="key key--op" data-action="multiply">×</button>
+            <button class="key key--op" data-action="multiply" data-math="multiply">×</button>
             <button class="key" data-digit="4">4</button>
             <button class="key" data-digit="5">5</button>
             <button class="key" data-digit="6">6</button>
-            <button class="key key--op" data-action="minus">−</button>
+            <button class="key key--op" data-action="minus" data-math="subtract">−</button>
             <button class="key" data-digit="1">1</button>
             <button class="key" data-digit="2">2</button>
             <button class="key" data-digit="3">3</button>
-            <button class="key key--op" data-action="plus">+</button>
+            <button class="key key--op" data-action="plus" data-math="add">+</button>
             <button class="key key--wide" data-digit="0">0</button>
             <button class="key" data-digit=".">.</button>
             <button class="key key--eq" data-action="equals" aria-label="Equals">=</button>
