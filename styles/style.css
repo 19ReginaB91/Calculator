@@ -1,0 +1,218 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Цвета для темы по умолчанию */
+    --color-bg-body: linear-gradient(135deg, #4c9f47 0%, #8dc291 100%);
+    --color-text: #fff;
+    --color-calculator-bg: #222;
+    --color-display-bg: #111;
+    --color-key-bg: #eee;
+    --color-key-hover-bg: #ddd;
+    --color-op-bg: #ff9500;
+    --color-op-hover-bg: #e08b00;
+    --color-func-bg: #d4d4d2;
+    --color-func-hover-bg: #c3c3c1;
+    --color-eq-bg: #4caf50;
+    --color-eq-hover-bg: #45a049;
+    --color-active-theme: #fff;
+    --color-theme-button-bg: #fff;
+    --color-theme-button-border: #999;
+}
+
+/* Тема: Синий, желтый, белый */
+.theme-blue-yellow {
+    --color-bg-body: linear-gradient(135deg, #2196F3 0%, #90CAF9 100%);
+    --color-calculator-bg: #fff;
+    --color-display-bg: #e0e0e0;
+    --color-text: #333;
+    --color-key-bg: #FFEB3B;
+    --color-key-hover-bg: #FDD835;
+    --color-op-bg: #42A5F5;
+    --color-op-hover-bg: #2196F3;
+    --color-func-bg: #BDBDBD;
+    --color-func-hover-bg: #9E9E9E;
+    --color-eq-bg: #607D8B;
+    --color-eq-hover-bg: #455A64;
+    --color-active-theme: #2196F3;
+    --color-theme-button-bg: #2196F3;
+}
+
+/* Тема: Зеленый, бежевый, коричневый */
+.theme-green-beige {
+    --color-bg-body: linear-gradient(135deg, #8BC34A 0%, #CDDC39 100%);
+    --color-calculator-bg: #F5F5DC;
+    --color-display-bg: #D7CCC8;
+    --color-text: #3E2723;
+    --color-key-bg: #A1887F;
+    --color-key-hover-bg: #8D6E63;
+    --color-op-bg: #4CAF50;
+    --color-op-hover-bg: #43A047;
+    --color-func-bg: #BCAAA4;
+    --color-func-hover-bg: #A1887F;
+    --color-eq-bg: #6D4C41;
+    --color-eq-hover-bg: #5D4037;
+    --color-active-theme: #4CAF50;
+    --color-theme-button-bg: #4CAF50;
+}
+
+/* Тема: Фиолетовый с белым и розовым */
+.theme-purple-pink {
+    --color-bg-body: linear-gradient(135deg, #9C27B0 0%, #E91E63 100%);
+    --color-calculator-bg: #fff;
+    --color-display-bg: #F3E5F5;
+    --color-text: #4A148C;
+    --color-key-bg: #E1BEE7;
+    --color-key-hover-bg: #CE93D8;
+    --color-op-bg: #8E24AA;
+    --color-op-hover-bg: #6A1B9A;
+    --color-func-bg: #D1C4E9;
+    --color-func-hover-bg: #B39DDB;
+    --color-eq-bg: #F48FB1;
+    --color-eq-hover-bg: #F06292;
+    --color-active-theme: #8E24AA;
+    --color-theme-button-bg: #8E24AA;
+}
+
+body {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: var(--color-bg-body); /* Используем переменную */
+    color: var(--color-text); /* Используем переменную */
+    transition: background 0.3s ease;
+}
+
+/* ... Остальные стили ... */
+
+.site-header {
+    position: absolute;
+    top: 20px;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.theme-button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid var(--color-theme-button-border);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--color-theme-button-bg);
+}
+
+.theme-button:hover {
+    transform: scale(1.1);
+}
+
+.theme-button.active-theme {
+    border-color: var(--color-active-theme);
+    box-shadow: 0 0 0 4px var(--color-active-theme);
+}
+
+.calculator {
+    background: var(--color-calculator-bg); /* Используем переменную */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: move;
+    transition: background 0.3s ease;
+}
+
+.display {
+    width: 100%;
+    height: 60px;
+    font-size: 2em;
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--color-display-bg); /* Используем переменную */
+    color: var(--color-text); /* Используем переменную */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 40px;
+    transition: background 0.3s ease;
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    gap: 10px;
+}
+
+.key {
+    height: 60px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 10px;
+    background: var(--color-key-bg); /* Используем переменную */
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: var(--color-text);
+}
+
+.key:hover {
+    background: var(--color-key-hover-bg); /* Используем переменную */
+}
+
+.key--op {
+    background: var(--color-op-bg); /* Используем переменную */
+    color: var(--color-text);
+}
+
+.key--op:hover {
+    background: var(--color-op-hover-bg); /* Используем переменную */
+}
+
+.key--func {
+    background: var(--color-func-bg); /* Используем переменную */
+    color: var(--color-text);
+}
+
+.key--func:hover {
+    background: var(--color-func-hover-bg); /* Используем переменную */
+}
+
+.key--wide {
+    grid-column: span 2;
+}
+
+.key--eq {
+    grid-column: span 2;
+    background: var(--color-eq-bg); /* Используем переменную */
+    color: var(--color-text);
+}
+
+.key--eq:hover {
+    background: var(--color-eq-hover-bg); /* Используем переменную */
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
