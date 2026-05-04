@@ -5,7 +5,6 @@
 }
 
 :root {
-    /* Default theme colors */
     --color-bg-body: linear-gradient(135deg, #4c9f47 0%, #8dc291 100%);
     --color-text: #fff;
     --color-calculator-bg: #222;
@@ -23,7 +22,6 @@
     --color-theme-button-border: #999;
 }
 
-/* Theme: Blue & Yellow */
 .theme-blue-yellow {
     --color-bg-body: linear-gradient(135deg, #2196F3 0%, #90CAF9 100%);
     --color-calculator-bg: #fff;
@@ -41,7 +39,6 @@
     --color-theme-button-bg: #2196F3;
 }
 
-/* Theme: Green & Beige */
 .theme-green-beige {
     --color-bg-body: linear-gradient(135deg, #8BC34A 0%, #CDDC39 100%);
     --color-calculator-bg: #F5F5DC;
@@ -59,7 +56,6 @@
     --color-theme-button-bg: #4CAF50;
 }
 
-/* Theme: Purple & Pink */
 .theme-purple-pink {
     --color-bg-body: linear-gradient(135deg, #9C27B0 0%, #E91E63 100%);
     --color-calculator-bg: #fff;
@@ -77,7 +73,6 @@
     --color-theme-button-bg: #8E24AA;
 }
 
-/* JOKE THEME: Calculator runs away */
 .theme-joke {
     --color-bg-body: linear-gradient(135deg, #FF6F61 0%, #FFB3A7 100%);
     --color-calculator-bg: #400000;
@@ -92,99 +87,86 @@
     --color-eq-bg: #FFD700;
     --color-eq-hover-bg: #EEDD82;
 }
+
 .theme-joke .key {
     color: #400000;
 }
-.theme-joke .key--op, 
+
+.theme-joke .key--op,
 .theme-joke .key--eq {
     color: #fff;
 }
 
-/* Joke button specific style */
-.joke-button {
-    width: 40px; 
-    border-radius: 5px; 
-    font-size: 10px;
-    font-weight: bold;
-    color: var(--color-text, white);
-    background-color: var(--color-theme-button-bg, gray);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-color: red;
-}
-
-/* --- JOKE MODE INDICATOR --- */
-
-@keyframes pulse-joke {
-    0% { transform: scale(1) translateX(-50%); opacity: 0.8; }
-    50% { transform: scale(1.05) translateX(-50%); opacity: 1; }
-    100% { transform: scale(1) translateX(-50%); opacity: 0.8; }
-}
-
-.calculator.theme-joke::after {
-    content: "JOKE MODE";
-    position: absolute;
-    top: -30px; /* Position above the calculator */
-    left: 50%;
-    transform: translateX(-50%);
-    
-    /* Text styles */
-    color: var(--color-text);
-    background-color: var(--color-op-bg);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    font-weight: bold;
-    letter-spacing: 1px;
-    
-    /* Animation */
-    animation: pulse-joke 1s infinite alternate;
-    z-index: 10;
-}
-
-
 body {
-    height: 100vh;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background: var(--color-bg-body);
     color: var(--color-text);
     transition: background 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
 }
 
 .site-header {
-    position: absolute;
+    position: fixed;
     top: 20px;
-    width: 90%; 
-    max-width: 500px; 
     left: 50%;
+    width: min(92%, 560px);
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    pointer-events: none; 
+    gap: 18px;
+    z-index: 20;
+    pointer-events: none;
 }
-.site-title, .theme-switcher {
-    pointer-events: auto; 
+
+.site-title,
+.theme-switcher {
+    pointer-events: auto;
+}
+
+.site-title {
+    font-size: 2rem;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .theme-switcher {
     display: flex;
+    align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .theme-button {
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     border: 2px solid var(--color-theme-button-border);
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, box-shadow 0.2s;
-    background: var(--color-theme-button-bg);
+}
+
+.theme-button:hover {
+    transform: translateY(-2px);
+}
+
+.theme-button--default {
+    background: linear-gradient(135deg, #4c9f47 0%, #8dc291 100%);
+}
+
+.theme-button--blue-yellow {
+    background: linear-gradient(135deg, #2196F3 0 50%, #FFEB3B 50% 100%);
+}
+
+.theme-button--green-beige {
+    background: linear-gradient(135deg, #4CAF50 0 50%, #F5F5DC 50% 100%);
+}
+
+.theme-button--purple-pink {
+    background: linear-gradient(135deg, #8E24AA 0 50%, #F48FB1 50% 100%);
 }
 
 .theme-button.active-theme {
@@ -192,60 +174,128 @@ body {
     box-shadow: 0 0 0 4px var(--color-active-theme);
 }
 
+.joke-button {
+    width: 46px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #FFD700;
+    background: #400000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: #FF4500;
+}
+
 .calculator {
+    width: 380px;
+    max-width: calc(100vw - 28px);
     background: var(--color-calculator-bg);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    position: absolute; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
     transition: background 0.3s ease, box-shadow 0.2s ease;
+    touch-action: none;
 }
 
-/* Drag & Drop Cursors */
-.calculator.is-movable { cursor: grab; }
-.calculator.is-dragging { cursor: grabbing; }
+.calculator.is-movable {
+    cursor: grab;
+}
 
-/* --- LEGS ANIMATION FOR JOKE THEME --- */
+.calculator.is-dragging {
+    cursor: grabbing;
+}
+
+@keyframes pulse-joke {
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+    }
+}
+
+.joke-label {
+    display: none;
+}
+
+.theme-joke .joke-label {
+    display: block;
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-text);
+    background-color: var(--color-op-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    animation: pulse-joke 1s infinite alternate;
+    z-index: 10;
+}
+
 @keyframes walk {
-    0% { transform: rotate(0deg); box-shadow: 0 5px 0 0 #000; }
-    50% { transform: rotate(5deg); box-shadow: 0 2px 0 0 #000; }
-    100% { transform: rotate(0deg); box-shadow: 0 5px 0 0 #000; }
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 0 5px 0 0 #000;
+    }
+
+    50% {
+        transform: rotate(8deg);
+        box-shadow: 0 2px 0 0 #000;
+    }
+
+    100% {
+        transform: rotate(0deg);
+        box-shadow: 0 5px 0 0 #000;
+    }
 }
 
 .calculator.is-movable.theme-joke {
-    padding-bottom: 30px; 
-    overflow: visible; 
+    padding-bottom: 30px;
+    overflow: visible;
 }
 
-/* Legs styles (::before and ::after) */
 .calculator.is-movable.theme-joke::before,
 .calculator.is-movable.theme-joke::after {
-    /* content is empty for legs, 'JOKE MODE' content is in .calculator.theme-joke::after */
     content: '';
     position: absolute;
-    bottom: 0; 
+    bottom: 0;
     width: 10px;
     height: 20px;
-    background: #333; 
+    background: #333;
     border-radius: 5px 5px 0 0;
-    z-index: -1; 
-    transform-origin: top center; 
-    animation: walk 0.3s infinite alternate; 
+    z-index: -1;
+    transform-origin: top center;
+    animation: walk 0.3s infinite alternate;
 }
 
-/* Left Leg */
-.calculator.is-movable.theme-joke::before { left: 20px; }
+.calculator.is-movable.theme-joke::before {
+    left: 20px;
+}
 
-/* Right Leg (offset animation phase) */
-.calculator.is-movable.theme-joke::after { right: 20px; animation-delay: 0.15s; }
+.calculator.is-movable.theme-joke::after {
+    right: 20px;
+    animation-delay: 0.15s;
+}
 
-/* Stop animation when not dragging */
 .calculator:not(.is-dragging).theme-joke::before,
 .calculator:not(.is-dragging).theme-joke::after {
-    animation-play-state: paused; 
+    animation-play-state: paused;
     transform: rotate(0deg);
 }
-
 
 .display {
     width: 100%;
@@ -267,12 +317,13 @@ body {
 
 .keys {
     display: grid;
-    grid-template-columns: repeat(4, 80px); 
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
 }
 
 .key {
     height: 60px;
+    min-width: 0;
     font-size: 1.5em;
     border: none;
     border-radius: 10px;
@@ -280,20 +331,61 @@ body {
     cursor: pointer;
     transition: background 0.3s ease, transform 0.1s;
     color: var(--color-text);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.key:active { 
+
+.key:active {
     transform: translateY(1px);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
-.key:hover { background: var(--color-key-hover-bg); }
-.key--op { background: var(--color-op-bg); color: var(--color-text); }
-.key--op:hover { background: var(--color-op-hover-bg); }
-.key--func { background: var(--color-func-bg); color: var(--color-text); }
-.key--func:hover { background: var(--color-func-hover-bg); }
-.key--wide { grid-column: span 2; }
-.key--eq { grid-column: span 2; background: var(--color-eq-bg); color: var(--color-text); }
-.key--eq:hover { background: var(--color-eq-hover-bg); }
+
+.key:hover {
+    background: var(--color-key-hover-bg);
+}
+
+.key--op {
+    background: var(--color-op-bg);
+    color: var(--color-text);
+}
+
+.key--op:hover {
+    background: var(--color-op-hover-bg);
+}
+
+.key--func {
+    background: var(--color-func-bg);
+    color: var(--color-text);
+}
+
+.key--func:hover {
+    background: var(--color-func-hover-bg);
+}
+
+.key--wide {
+    grid-column: span 2;
+}
+
+.key--eq {
+    grid-column: span 2;
+    background: var(--color-eq-bg);
+    color: var(--color-text);
+}
+
+.key--eq:hover {
+    background: var(--color-eq-hover-bg);
+}
+
+.site-footer {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    width: min(92%, 560px);
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.85;
+    z-index: 10;
+}
 
 .visually-hidden {
     position: absolute;
@@ -304,4 +396,64 @@ body {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+@media (max-width: 520px) {
+    .site-header {
+        top: 14px;
+        width: min(94%, 360px);
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .site-title {
+        font-size: 1.55rem;
+    }
+
+    .theme-switcher {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .calculator {
+        width: min(340px, calc(100vw - 24px));
+        padding: 16px;
+    }
+
+    .display {
+        height: 54px;
+        font-size: 1.7em;
+        line-height: 34px;
+    }
+
+    .keys {
+        gap: 8px;
+    }
+
+    .key {
+        height: 54px;
+        font-size: 1.25em;
+    }
+
+    .site-footer {
+        bottom: 10px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .calculator {
+        width: calc(100vw - 18px);
+        padding: 14px;
+    }
+
+    .key {
+        height: 48px;
+        font-size: 1.1em;
+    }
+
+    .display {
+        height: 50px;
+        font-size: 1.5em;
+    }
 }

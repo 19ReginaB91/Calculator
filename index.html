@@ -9,45 +9,57 @@
 <body>
     <header class="site-header">
         <h1 class="site-title">Calculator</h1>
-        <div class="theme-switcher">
-            <button class="theme-button active-theme" data-theme="default" aria-label="Default Theme"></button>
-            <button class="theme-button" data-theme="blue-yellow" aria-label="Blue and Yellow Theme"></button>
-            <button class="theme-button" data-theme="green-beige" aria-label="Green and Beige Theme"></button>
-            <button class="theme-button" data-theme="purple-pink" aria-label="Purple and Pink Theme"></button>
-            
-            <button class="theme-button joke-button" data-theme="joke" aria-label="Joke Theme - Calculator runs away">
+
+        <div class="theme-switcher" aria-label="Theme switcher">
+            <button class="theme-button theme-button--default active-theme" data-theme="default" aria-label="Default theme"></button>
+            <button class="theme-button theme-button--blue-yellow" data-theme="blue-yellow" aria-label="Blue and yellow theme"></button>
+            <button class="theme-button theme-button--green-beige" data-theme="green-beige" aria-label="Green and beige theme"></button>
+            <button class="theme-button theme-button--purple-pink" data-theme="purple-pink" aria-label="Purple and pink theme"></button>
+
+            <button class="theme-button joke-button" data-theme="joke" aria-label="Joke theme">
                 JOKE
             </button>
-            
         </div>
     </header>
 
     <main id="calculator-container" class="calculator is-movable" aria-labelledby="calc-heading">
         <h2 id="calc-heading" class="visually-hidden">Interactive calculator</h2>
+
+        <span class="joke-label" aria-hidden="true">JOKE MODE</span>
+
         <output id="display" class="display" role="status" aria-live="polite">0</output>
+
         <div class="keys" role="group" aria-label="Calculator keys">
             <button class="key key--func" data-action="clear">C</button>
             <button class="key key--func" data-action="delete">DEL</button>
             <button class="key key--func" data-action="percent" data-math="percent">%</button>
             <button class="key key--op" data-action="divide" data-math="divide">÷</button>
+
             <button class="key" data-digit="7">7</button>
             <button class="key" data-digit="8">8</button>
             <button class="key" data-digit="9">9</button>
             <button class="key key--op" data-action="multiply" data-math="multiply">×</button>
+
             <button class="key" data-digit="4">4</button>
             <button class="key" data-digit="5">5</button>
             <button class="key" data-digit="6">6</button>
             <button class="key key--op" data-action="minus" data-math="subtract">−</button>
+
             <button class="key" data-digit="1">1</button>
             <button class="key" data-digit="2">2</button>
             <button class="key" data-digit="3">3</button>
             <button class="key key--op" data-action="plus" data-math="add">+</button>
+
             <button class="key key--wide" data-digit="0">0</button>
             <button class="key" data-digit=".">.</button>
             <button class="key key--eq" data-action="equals" aria-label="Equals">=</button>
         </div>
     </main>
-    <footer class="site-footer"></footer>
+
+    <footer class="site-footer">
+        <p>Built with HTML, CSS and JavaScript</p>
+    </footer>
+
     <script src="script/script.js" defer></script>
 </body>
 </html>
