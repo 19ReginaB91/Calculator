@@ -1,65 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Interactive Calculator</title>
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    href="assets/media/favicon.png"
+    type="image/png"
+  />
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="./styles/style.css"
+  />
+
+  <!-- JS -->
+  <script
+    src="./script/script.js"
+    defer
+  ></script>
 </head>
+
 <body>
-    <header class="site-header">
-        <h1 class="site-title">Calculator</h1>
 
-        <div class="theme-switcher" aria-label="Theme switcher">
-            <button class="theme-button theme-button--default active-theme" data-theme="default" aria-label="Default theme"></button>
-            <button class="theme-button theme-button--blue-yellow" data-theme="blue-yellow" aria-label="Blue and yellow theme"></button>
-            <button class="theme-button theme-button--green-beige" data-theme="green-beige" aria-label="Green and beige theme"></button>
-            <button class="theme-button theme-button--purple-pink" data-theme="purple-pink" aria-label="Purple and pink theme"></button>
+  <!-- Header -->
+  <header class="site-header">
 
-            <button class="theme-button joke-button" data-theme="joke" aria-label="Joke theme">
-                JOKE
-            </button>
-        </div>
-    </header>
+    <h1 class="site-title">
+      Calculator
+    </h1>
 
-    <main id="calculator-container" class="calculator is-movable" aria-labelledby="calc-heading">
-        <h2 id="calc-heading" class="visually-hidden">Interactive calculator</h2>
+    <div
+      class="theme-switcher"
+      aria-label="Theme switcher"
+    >
 
-        <span class="joke-label" aria-hidden="true">JOKE MODE</span>
+      <button
+        class="theme-button theme-button--default active-theme"
+        data-theme="default"
+        aria-label="Default theme"
+      ></button>
 
-        <output id="display" class="display" role="status" aria-live="polite">0</output>
+      <button
+        class="theme-button theme-button--blue-yellow"
+        data-theme="blue-yellow"
+        aria-label="Blue yellow theme"
+      ></button>
 
-        <div class="keys" role="group" aria-label="Calculator keys">
-            <button class="key key--func" data-action="clear">C</button>
-            <button class="key key--func" data-action="delete">DEL</button>
-            <button class="key key--func" data-action="percent" data-math="percent">%</button>
-            <button class="key key--op" data-action="divide" data-math="divide">÷</button>
+      <button
+        class="theme-button theme-button--green-beige"
+        data-theme="green-beige"
+        aria-label="Green beige theme"
+      ></button>
 
-            <button class="key" data-digit="7">7</button>
-            <button class="key" data-digit="8">8</button>
-            <button class="key" data-digit="9">9</button>
-            <button class="key key--op" data-action="multiply" data-math="multiply">×</button>
+      <button
+        class="theme-button theme-button--purple-pink"
+        data-theme="purple-pink"
+        aria-label="Purple pink theme"
+      ></button>
 
-            <button class="key" data-digit="4">4</button>
-            <button class="key" data-digit="5">5</button>
-            <button class="key" data-digit="6">6</button>
-            <button class="key key--op" data-action="minus" data-math="subtract">−</button>
+      <button
+        class="theme-button joke-button"
+        data-theme="joke"
+        aria-label="Joke theme"
+      >
+        JOKE
+      </button>
 
-            <button class="key" data-digit="1">1</button>
-            <button class="key" data-digit="2">2</button>
-            <button class="key" data-digit="3">3</button>
-            <button class="key key--op" data-action="plus" data-math="add">+</button>
+    </div>
 
-            <button class="key key--wide" data-digit="0">0</button>
-            <button class="key" data-digit=".">.</button>
-            <button class="key key--eq" data-action="equals" aria-label="Equals">=</button>
-        </div>
-    </main>
+  </header>
 
-    <footer class="site-footer">
-        <p>Built with HTML, CSS and JavaScript</p>
-    </footer>
+  <!-- Main -->
+  <main>
 
-    <script src="script/script.js" defer></script>
+    <section
+      class="calculator"
+      id="calculator-container"
+      aria-label="Calculator"
+    >
+
+      <span class="joke-label">
+        Catch me if you can!
+      </span>
+
+      <!-- Display -->
+      <div
+        class="display"
+        id="display"
+        role="status"
+        aria-live="polite"
+      >
+        0
+      </div>
+
+      <!-- Buttons -->
+      <div class="keys">
+
+        <button
+          class="key key--func"
+          data-action="clear"
+        >
+          AC
+        </button>
+
+        <button
+          class="key key--func"
+          data-action="delete"
+        >
+          DEL
+        </button>
+
+        <button
+          class="key key--func"
+          data-action="percent"
+        >
+          %
+        </button>
+
+        <button
+          class="key key--op"
+          data-action="divide"
+        >
+          ÷
+        </button>
+
+        <button
+          class="key"
+          data-digit="7"
+        >
+          7
+        </button>
+
+        <button
+          class="key"
+          data-digit="8"
+        >
+          8
+        </button>
+
+        <button
+          class="key"
+          data-digit="9"
+        >
+          9
+        </button>
+
+        <button
+          class="key key--op"
+          data-action="multiply"
+        >
+          ×
+        </button>
+
+        <button
+          class="key"
+          data-digit="4"
+        >
+          4
+        </button>
+
+        <button
+          class="key"
+          data-digit="5"
+        >
+          5
+        </button>
+
+        <button
+          class="key"
+          data-digit="6"
+        >
+          6
+        </button>
+
+        <button
+          class="key key--op"
+          data-action="minus"
+        >
+          −
+        </button>
+
+        <button
+          class="key"
+          data-digit="1"
+        >
+          1
+        </button>
+
+        <button
+          class="key"
+          data-digit="2"
+        >
+          2
+        </button>
+
+        <button
+          class="key"
+          data-digit="3"
+        >
+          3
+        </button>
+
+        <button
+          class="key key--op"
+          data-action="plus"
+        >
+          +
+        </button>
+
+        <button
+          class="key key--wide"
+          data-digit="0"
+        >
+          0
+        </button>
+
+        <button
+          class="key"
+          data-digit="."
+        >
+          .
+        </button>
+
+        <button
+          class="key key--eq"
+          data-action="equals"
+        >
+          =
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>
+      Built with HTML, CSS & JavaScript
+    </p>
+  </footer>
+
 </body>
 </html>
