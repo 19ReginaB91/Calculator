@@ -24,9 +24,9 @@ It includes different color themes, keyboard support, responsive design and a fu
 - JavaScript
 - Git / GitHub
 
-## Preview
 
-![Calculator Preview](./images/preview.png)
+
+
 
 ## Live Demo
 
